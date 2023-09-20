@@ -14,14 +14,14 @@ class Users(db.Model, UserMixin):
     lista_filmes = db.Column(db.String(2000), nullable=True)
 
     @classmethod
-    def find_all(cls) -> List['Users']:
+    def find_by_email(cls, email) -> List['Users']:
 
         engine = ConnectionHandler.get_engine()
         Session = sessionmaker(engine)
         
         with Session() as session:
 
-            return session.query(Users)
+            return session.query(Users).filter_by(email = email).first()
         
     @classmethod
     def add_new_user(cls, firstName, email, senha):

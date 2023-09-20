@@ -1,14 +1,31 @@
 from flask import Blueprint, Flask, render_template, request, flash, redirect, url_for
-from .controller.users import get_users, add_user
+from .controller.users import add_user, get_user_by_email
 from .models.users import Users
 
 auth = Blueprint('auth', __name__)
 
 @auth.route('/', methods=['GET', 'POST'])
-def index():
-    email = request.form.get('email')
-    #print(get_users())
+def login():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        user = get_user_by_email(email)
+        password = request.form.get('password')
+        if user:
+            if password == user.senha:
+                flash('Logado com sucesso!', category='success')
+                return redirect(url_for('views.home'))
+            else:
+                flash('Senha incorreta!', category='error')
+        else:
+            flash('Este email não existe!', category='error')
+
     return render_template("index.html")
+
+@auth.route('/logout')
+#@login_required
+def logout():
+    #logout_user()
+    return redirect(url_for('auth.login'))
 
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():

@@ -6,15 +6,9 @@ from ..schemas.users import UsersSchema
 users_schema = UsersSchema()
 users_list_schema = UsersSchema(many=True)
 
-def get_users():
+def get_user_by_email(email):
 
-    query = users_list_schema.dump(Users.find_all())
-    print(jsonify)
-    print(query)
-    if query:
-        return 'passou'
-    else:
-        return None
+    return Users.find_by_email(email)
     
 def add_user(firstName, email, senha):
 
