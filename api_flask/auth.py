@@ -1,6 +1,7 @@
 from flask import Blueprint, Flask, render_template, request, flash, redirect, url_for
 from .controller.users import add_user, get_user_by_email
 from .models.users import Users
+from flask_login import login_user, login_required, logout_user, current_user
 
 auth = Blueprint('auth', __name__)
 
@@ -13,6 +14,7 @@ def login():
         if user:
             if password == user.senha:
                 flash('Logado com sucesso!', category='success')
+                login_user(user, remember=True)
                 return redirect(url_for('views.home'))
             else:
                 flash('Senha incorreta!', category='error')
@@ -22,9 +24,9 @@ def login():
     return render_template("index.html")
 
 @auth.route('/logout')
-#@login_required
+@login_required
 def logout():
-    #logout_user()
+    logout_user()
     return redirect(url_for('auth.login'))
 
 @auth.route('/signup', methods=['GET', 'POST'])
@@ -51,6 +53,7 @@ def signup():
             flash('Senha menor que 7 caracteres', category='error')
         else:
             add_user(first_name, email, password1)
+            login_user(user, remember=True)
             flash('Conta criada!', category='success')
             return redirect(url_for('auth.index'))
         
