@@ -1,15 +1,24 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
 from flask_login import login_required, current_user
+from .models.movies import Movies
+from .schemas.movies import MoviesSchema
 from . import db
 import json
 
 views = Blueprint('views', __name__)
+movies_schema = MoviesSchema()
 
 
 @views.route('/home', methods=['GET', 'POST'])
-#@login_required
+@login_required
 def home():
+    filmes = Movies.find_by_user_id(current_user.id)
+    #jsonFilmes = jsonify(movies_schema.dump(Movies.find_by_user_id(current_user.id)))
+
+    return render_template("home.html", filmes=filmes)
+
+"""def home():
     if request.method == 'POST':
         note = request.form.get('note')
 
@@ -21,4 +30,4 @@ def home():
             #db.session.commit()
             flash('Note added!', category='success')
 
-    return render_template("home.html", user=current_user)
+    return render_template("home.html", user=current_user)"""
