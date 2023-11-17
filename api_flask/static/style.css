@@ -7,7 +7,7 @@ html, body{
 }
 
 body {
-    background-image: url("./img/background.jpg");
+    background-image: url("./img/background_home2.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -16,6 +16,10 @@ body {
 
 .alert {
     margin-top: 80px;
+}
+
+.home {
+    background-image: url('./img/background_home2.png');
 }
 
 #navbar {
@@ -145,3 +149,37 @@ body {
 #inicio form input::placeholder{
     color: #fff;
 }
+  
+/* Estilizando a barra lateral */
+.sidebar {
+width: 250px; /* Largura da barra lateral */
+height: 100vh; /* Altura total da viewport */
+background-color: #333; /* Cor de fundo para visualização caso a imagem não carregue */
+position: fixed;
+top: 0;
+left: 0;
+z-index: 1; /* Garante que a barra lateral fique sobre o conteúdo */
+overflow-x: hidden;
+padding-top: 20px; /* Espaço para evitar que os botões fiquem na borda superior */
+}
+
+/* Estilizando os botões */
+.buttons {
+padding-top: 90px;
+}
+
+.buttons a {
+display: block;
+width: 100%;
+padding: 10px;
+margin-bottom: 10px;
+background-color: #ddd;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.buttons button:hover {
+background-color: #aaa;
+}
+  

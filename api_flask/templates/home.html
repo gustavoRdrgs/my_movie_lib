@@ -10,13 +10,33 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <title>Login</title>
 </head>
+<body class="home">
+  <nav id="navbar" class="navbar navbar-expand-lg">
+    <div class="container">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <img src="../static/img/logotipo.png" alt="logotipo" height="60" width="180">
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li  class="nav-item">
+            <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/logout">
+              <i class="bi bi-box-arrow-right"></i> Deslogar</a>
+          </li>
+        </ul>
+    </div>
+  </nav>
+  <div class="sidebar">
+    <div class="background-image"></div>
+    <div class="buttons">
+      <a href=""
+        <button>Perfil</button>
+      </a>
+      <a href=""
+        <button>Meus Filmes</button>
+      </a>
+      <a href="http://127.0.0.1:5000/add_movie"
+        <button>Registrar Novo Filme</button>
+      </a>
+    </div>
+  </div>
 <body>
-  <h1>Lista de Filmes</h1>
-  <ul>
-      {% for filme in filmes %}
-          <li>{{ filme.titulo }}</li>
-          <!-- Exibir outros detalhes do usuário, se necessário -->
-      {% endfor %}
-  </ul>
-</body>
-<h2>VASCO</h2>
+<html>

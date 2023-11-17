@@ -14,9 +14,15 @@ movies_schema = MoviesSchema()
 @login_required
 def home():
     filmes = Movies.find_by_user_id(current_user.id)
-    #jsonFilmes = jsonify(movies_schema.dump(Movies.find_by_user_id(current_user.id)))
 
     return render_template("home.html", filmes=filmes)
+
+@views.route('/add_movie', methods=['GET', 'POST'])
+@login_required
+def add_movie():
+    filmes = Movies.find_by_user_id(current_user.id)
+
+    return render_template("add_filme.html", filmes=filmes)
 
 """def home():
     if request.method == 'POST':
