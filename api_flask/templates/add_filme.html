@@ -6,32 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="../static/style.css">
-  <link rel="icon" type='image/png' href="../static/img/asset-15.png">
+  <link rel="icon" type='image/png' href="../static/img/favicon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-  <title>Login</title>
+  <title>Add Filme</title>
 </head>
 <body class="home">
-  <nav id="navbar" class="navbar navbar-expand-lg">
-    <div class="container">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <img src="../static/img/logotipo.png" alt="logotipo" height="60" width="180">
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li  class="nav-item">
-            <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/logout">
-              <i class="bi bi-box-arrow-right"></i> Deslogar</a>
-          </li>
-        </ul>
-    </div>
-  </nav>
+  <a class="corner-button" href="http://127.0.0.1:5000/logout">
+    <i class="bi bi-box-arrow-right"></i> SAIR</a>
   <div class="sidebar">
-    <div class="background-image"></div>
     <div class="buttons">
-      <button>Perfil</button>
-      <button>Meus Filmes</button>
-      <button>Registrar Novo Filme</button>
-      <h1>VASCO</h1>
+      <ul class="img">
+        <img src="../static/img/logotipo.png" alt="logotipo" height="60" width="180">
+      </ul>
+      <img class="img-perfil" src="../static/img/perfil.jpg" alt="perfil">
+      <a class="nav-link active" aria-current="page" href="">
+        <i class="bi bi-person"></i> Perfil
+      </a>
+      <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/home">
+        <i class="bi bi-film"></i> Meus Filmes
+      </a>
+      <a class="nav-link active" style="color: rgb(44, 139, 255);" aria-current="page" href="http://127.0.0.1:5000/add_movie">
+        <i class="bi bi-bookmark-plus-fill"></i> Registrar Novo Filme
+      </a>
     </div>
   </div>
-<body>
+</body>
 <html>
