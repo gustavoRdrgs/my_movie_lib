@@ -9,8 +9,26 @@
   <link rel="icon" type='image/png' href="../static/img/favicon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <title>Add Filme</title>
+  
 </head>
 <body class="home">
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %} {% if category ==
+    'error' %}
+    <div class="alert alert-add alert-danger alter-dismissable fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% else %}
+    <div class="alert alert-add alert-success alter-dismissable fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
   <a class="corner-button" href="http://127.0.0.1:5000/logout">
     <i class="bi bi-box-arrow-right"></i> SAIR</a>
   <div class="sidebar">
@@ -30,5 +48,81 @@
       </a>
     </div>
   </div>
+  <section class="content">
+    <div class="mb-3 container">
+      <form method="POST" enctype="multipart/form-data">
+        <h2>Insira os dados do filme</h2>
+      <div class="form-group">
+        <label for="film-name">Nome do Filme</label>
+        <input
+          type="text"
+          class="form-control"
+          id="film-name"
+          name="film-name"
+          placeholder="Insira o nome do filme"
+        />
+      </div>
+      <div class="form-group">
+        <label for="director">Diretor</label>
+        <input
+          type="text"
+          class="form-control"
+          id="director"
+          name="director"
+          placeholder="Insira o nome do diretor"
+        />
+      </div>
+      <div class="form-group">
+        <label for="year">Ano de lançamento</label>
+        <input
+          type="text"
+          class="form-control"
+          id="year"
+          name="year"
+          placeholder="Insira o ano de lançamento do filme"
+        />
+      </div>
+      <div class="form-group">
+        <label for="time-minutes">Tempo de duração</label>
+        <input
+          type="text"
+          class="form-control"
+          id="time-minutes"
+          name="time-minutes"
+          placeholder="Informe a duração em minutos do filme"
+        />
+      </div>
+      <div class="form-group">
+        <label for="genero">Gênero</label>
+        <input
+          type="text"
+          class="form-control"
+          id="genero"
+          name="genero"
+          placeholder="Informe o gênero do filme"
+        />
+      </div>
+      <div class="form-group">
+        <label for="genero">Sinopse</label>
+        <textarea
+          type="text"
+          class="form-control"
+          id="sinopse"
+          name="sinopse"
+          placeholder="Informe uma breve sinopse do filme"
+        ></textarea>
+      </div>
+      <div>
+        <label for="imagem" class="custom-upload"><i class="bi bi-card-image"></i> Pôster ou cartaz do filme</label>
+        <input 
+          type="file" 
+          name="image"
+        />
+      </div>
+      <br />
+      <button type="submit" class="btn">Enviar</button>
+    </form>
+    </div>
+  </section>
 </body>
 <html>

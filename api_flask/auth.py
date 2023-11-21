@@ -43,7 +43,7 @@ def signup():
 
         if user:
             flash('Este email já foi cadastrado', category='error')
-        if len(email) < 4:
+        elif len(email) < 4:
             flash('Email muito curto', category='error')
         elif len(first_name) < 2:
             flash('Primeiro nome tem que ter mais de 1 caractere', category='error')

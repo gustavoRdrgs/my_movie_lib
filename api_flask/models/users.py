@@ -11,8 +11,7 @@ class Users(db.Model, UserMixin):
     primeiro_nome = db.Column(db.String(30), nullable=False)
     email = db.Column(db.String(150), nullable=False)
     senha = db.Column(db.String(200), nullable=False)
-    lista_filmes = db.Column(db.String(2000), nullable=True)
-
+    
     @classmethod
     def find_by_email(cls, email) -> List['Users']:
 

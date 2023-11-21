@@ -30,5 +30,17 @@
       </a>
     </div>
   </div>
+  
+  <div class="conteudo">
+    <h1 class="titulo">Lista de Filmes</h1>
+    <div class="grid-filmes">
+        {% for filme in filmes %}
+            <div class="filme">
+                <img src="{{ url_for('static', filename=filme.image_path) }}" alt="{{ filme.titulo }}">
+                <p>{{ filme.titulo }}</p>
+            </div>
+        {% endfor %}
+    </div>
+  </div>
 </body>
 <html>
