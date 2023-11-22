@@ -12,13 +12,18 @@
 </head>
 <body class="home">
   <a class="corner-button" href="http://127.0.0.1:5000/logout">
-    <i class="bi bi-box-arrow-right"></i> SAIR</a>
+    <i class="bi bi-box-arrow-right"></i> Sair</a>
   <div class="sidebar">
     <div class="buttons">
       <ul class="img">
         <img src="../static/img/logotipo.png" alt="logotipo" height="60" width="180">
       </ul>
-      <img class="img-perfil" src="../static/img/perfil.jpg" alt="perfil">
+      {% if current_user.path_profile_pic %}
+        <img class="img-perfil" src="{{ url_for('static', filename=current_user.path_profile_pic) }}" alt="perfil">
+      {% else %}
+        <img class="img-perfil" src="../static/img/perfil.jpg" alt="perfil">
+      {% endif %}
+      <h1 class="profile_name">{{ current_user.primeiro_nome }}</h1>
       <a class="nav-link active" aria-current="page" href="">
         <i class="bi bi-person"></i> Perfil
       </a>
@@ -26,7 +31,7 @@
         <i class="bi bi-film"></i> Lista de Filmes
       </a>
       <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/home">
-        <i class="bi bi-heart-fill"></i> Meus Filmes
+        <i class="bi bi-heart-fill"></i> Filmes Assistidos
       </a>
       <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/add_movie">
         <i class="bi bi-bookmark-plus-fill"></i> Registrar Novo Filme
@@ -34,8 +39,8 @@
     </div>
   </div>
   
-  <div class="conteudo">
-    <h1 class="titulo">Meus Filmes:</h1>
+  <div class="conteudo grid-filmeslist">
+    <h1 class="titulo">Lista de Filmes:</h1>
     <div class="grid-filmes">
         {% for filme in filmes %}
             <div class="filme">
@@ -49,7 +54,7 @@
                 <p class="filme-infos"><strong>Diretor: </strong>{{ filme.diretor }}</p>
                 <p class="filme-infos p-border-bottom"><strong>Gênero: </strong>{{ filme.genero }}</p>
                 <a href="{{ url_for('views.add_movie_click', filme_id=filme.id) }}" >
-                  <button class="adicionar" data-id="{{ filme.id }}"><i class="bi bi-check-circle">  </i>Já assisti</button>
+                  <button class="adicionar" data-id="{{ filme.id }}"><i class="bi bi-check-circle">  </i> Assistido</button>
                 </a>
               </div>
             </div>

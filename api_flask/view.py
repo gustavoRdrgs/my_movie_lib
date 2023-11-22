@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
 from flask_login import login_required, current_user
+from collections import Counter
 from .controller.movies import add_new_movie, find_by_user_id, get_movie_by_id
 from .controller.movies_geral import add_new_movie_geral, get_all_geral, get_movie_by_id_geral
 from . import db
@@ -12,7 +13,8 @@ views = Blueprint('views', __name__)
 @login_required
 def home():
     lista_filmes = find_by_user_id(current_user.id)
-    return render_template("home.html", user=current_user, filmes=lista_filmes)
+    movies_counts = Counter([filme.movie_ID for filme in lista_filmes])
+    return render_template("home.html", user=current_user, filmes=lista_filmes, movies_counts=movies_counts)
 
 @views.route('/movies_page', methods=['GET', 'POST'])
 @login_required
@@ -70,8 +72,8 @@ def add_movie_click(filme_id):
     user_ID = current_user.id
     image_path = filme.image_path
     sinopse = filme.sinopse
-    movie_ID = filme_id
-
+    movie_ID = filme_id 
+    
     add_new_movie(titulo, diretor, ano, minutos, genero, user_ID, image_path, sinopse, movie_ID)
     lista_filmes = get_all_geral()
     return render_template("movies_list.html", user=current_user, filmes=lista_filmes)

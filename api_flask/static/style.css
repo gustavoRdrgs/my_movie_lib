@@ -19,9 +19,16 @@ body {
     margin-top: 80px;
 }
 
-.home {
-    background-image: url('./img/background_home2.png');
+.background {
+    height: 100%;
+    width: 100%;
+    background-color: #00000081;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
 }
+  
 
 #navbar {
     position: absolute;
@@ -40,17 +47,17 @@ body {
 }
 
 #navbar a {
-    border-radius: 10px;
-    font-size: 20px;
-    padding-right: 0.8rem;
+    padding: 5px 8px;
+    font-weight: bolder;
+    border-radius: 6px;
+    font-size: 18px;
+    padding-right: -10rem;
     color: #ffffff;
     text-align: right;
 }
 
 #navbar a:hover {
-    opacity: 0.7;
-    border-radius: 10px;
-    background-color: rgb(44, 139, 255)
+    background-color: rgba(44, 139, 255, 0.652)
 }
 
 #main_login {
@@ -68,24 +75,28 @@ body {
 }
 
 #main_login .container {
-    background: #000000;
-    opacity: 0.5;
+    background: #00000098;;
     margin-top: 100px;
     border-radius: 5px;
-    width: 500px;
-    height: 270px;
+    width: 600px;
+    height: 250px;
 }
 
 #main_signup .container {
-    background: #000000;
-    opacity: 0.5;
+    background: #00000098;;
     margin-top: 100px;
     border-radius: 5px;
-    width: 500px;
-    height: 480px;
+    width: 600px;
+    height: 400px;
 }
 
 #main_signup .container .form-group label{
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+#main_login .container .form-group label{
+    margin-top: 20px;
     color: #ffffff;
 }
 
@@ -133,18 +144,18 @@ body {
 
 #inicio form div {
     padding: 5px;
-    margin-top: 30px;
 }
 
 #inicio form input {
     color: #fff;
-    background-color:  rgba(44, 139, 255, 0.427);
-    border: 3px solid #020043;
+    background-color:  rgba(85, 161, 255, 0.427);
+    border: 2px solid #000000;
 }
 
 #inicio form input:focus {
-    background-color:  rgb(44, 139, 255);
-    border: 3px solid #020043;
+    color: #fff;
+    background-color:  rgba(85, 161, 255, 0.427);
+    border: 2px solid #000000;
 }
 
 #inicio form input::placeholder{
@@ -163,6 +174,13 @@ body {
     z-index: 1;
     overflow-x: hidden;
     padding-top: 0px;
+}
+
+.sidebar h1 {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 25px;
 }
 
 .buttons {
@@ -193,23 +211,25 @@ body {
     height: 100px;
     border-radius: 50%;
     vertical-align: middle;
+    margin-top: 25px;
     margin-left: 30%;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     align-content: center;
   }
 
 .buttons a:hover {
-color:#ffffff;
-background-color: rgb(67, 67, 67);
+    color:#ffffff;
+    background-color: rgb(67, 67, 67);
 }
 
 .corner-button {
+    font-weight: bold;
     position: absolute;
     top: 20px;
     right: 20px;
     background-color: #2222225c;
     color: white;
-    padding: 10px 20px;
+    padding: 7px 10px;
     border: none; 
     border-radius: 5px; 
     cursor: pointer; 
@@ -217,7 +237,7 @@ background-color: rgb(67, 67, 67);
 }
 
 .corner-button:hover {
-    background-color: #222222;
+    background-color: rgba(44, 139, 255, 0.712);
 }
 
 .content {
@@ -239,8 +259,7 @@ background-color: rgb(67, 67, 67);
 }
 
 .content form {
-    background: #000000;
-    opacity: 0.6;
+    background: #00000098;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -257,13 +276,14 @@ background-color: rgb(67, 67, 67);
     display: block;
     margin-bottom: 0px;
     color: #fff;
-    background-color:  rgba(44, 139, 255, 0.427);
-    border: 3px solid #020043;
+    background-color:  rgba(85, 161, 255, 0.427);
+    border: 2px solid #000000;
 }
 
 .content form input:focus {
-    background-color:  rgba(44, 139, 255, 0.512);
-    border: 3px solid #020043;
+    color: #ffffff;
+    background-color:  rgba(128, 185, 255, 0.427);
+    border: 1px solid #1d1d1d;
 }
 
 .content form input::placeholder{
@@ -271,17 +291,18 @@ background-color: rgb(67, 67, 67);
 }
 
 .content form textarea {
+    height: 100px;
     display: block;
     margin-bottom: 0px;
     color: #fff;
-    background-color:  rgba(44, 139, 255, 0.427);
-    border: 3px solid #020043;
-    height: 100px;
+    background-color:  rgba(85, 161, 255, 0.427);
+    border: 2px solid #000000;
 }
 
 .content form textarea:focus {
-    background-color:  rgba(44, 139, 255, 0.512);
-    border: 3px solid #020043;
+    color: #ffffff;
+    background-color:  rgba(128, 185, 255, 0.427);
+    border: 1px solid #1d1d1d;
 }
 
 .content form textarea::placeholder{
@@ -342,8 +363,17 @@ background-color: rgb(67, 67, 67);
     padding: 20px;
     color: #333;
     margin-left: 260px;
-    margin-top: 50px;
+    margin-top: 0px;
     align-items: center;
+}
+
+.conteudo a {
+    text-decoration: none;
+}
+
+.grid-meusfilmes {
+    margin-top: 0px;
+    height: 100%;
 }
 
 .grid-filmes {
@@ -353,7 +383,20 @@ background-color: rgb(67, 67, 67);
     justify-items: center;
 }
 
+.grid-meusfilmes .grid-filmes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 20px;
+    justify-items: left;
+}
+
 .filme {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+.grid-meusfilmes .filme {
     position: relative;
     display: inline-block;
     text-align: center;
@@ -368,6 +411,15 @@ background-color: rgb(67, 67, 67);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.grid-meusfilmes .filme img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .filme p {
     color: #fff;
     padding: 7px;
@@ -378,11 +430,33 @@ background-color: rgb(67, 67, 67);
     font-weight: bold;
 }
 
+.grid-meusfilmes .filme p {
+    margin-top: -6px;
+    color: #fff;
+    padding: 7px;
+    font-size: 16px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color:  rgba(255, 255, 255, 0);
+    font-weight: bold;
+}
+
 .titulo {
+    margin-top: 20px;
     font-size: 26px;
-    color: rgb(24, 24, 24);
+    color: rgb(255, 255, 255);
     text-align: left;
-    border-bottom: 3px solid  rgb(44, 44, 44);
+    border-bottom: 3px solid  rgba(44, 139, 255, 0.648);;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.grid-meusfilmes .titulo {
+    font-size: 26px;
+    color: rgb(255, 255, 255);
+    text-align: left;
+    border-bottom: 3px solid  rgba(255, 255, 255, 0.795);
     padding-bottom: 5px;
     margin-bottom: 20px;
     font-weight: bold;
@@ -467,3 +541,38 @@ background-color: rgb(67, 67, 67);
     transform: scale(0.95);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
+
+.contador {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #bdb000;
+    color: #000000;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 35px;
+    font-size: 21px;
+    z-index: 1;
+    font-weight: bold;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .contador::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .contador::before,
+  .contador {
+    opacity: 1;
+  }

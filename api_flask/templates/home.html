@@ -11,40 +11,52 @@
   <title>Home</title>
 </head>
 <body class="home">
-  <a class="corner-button" href="http://127.0.0.1:5000/logout">
-    <i class="bi bi-box-arrow-right"></i> SAIR</a>
-  <div class="sidebar">
-    <div class="buttons">
-      <ul class="img">
-        <img src="../static/img/logotipo.png" alt="logotipo" height="60" width="180">
-      </ul>
-      <img class="img-perfil" src="../static/img/perfil.jpg" alt="perfil">
-      <a class="nav-link active" aria-current="page" href="">
-        <i class="bi bi-person"></i> Perfil
-      </a>
-      <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/movies_page">
-        <i class="bi bi-film"></i> Lista de Filmes
-      </a>
-      <a class="nav-link active" style="background-color: rgba(44, 139, 255, 0.744);" aria-current="page" href="http://127.0.0.1:5000/home">
-        <i class="bi bi-heart-fill"></i> Meus Filmes
-      </a>
-      <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/add_movie">
-        <i class="bi bi-bookmark-plus-fill"></i> Registrar Novo Filme
-      </a>
+  <div class="background">
+    <a class="corner-button" href="http://127.0.0.1:5000/logout">
+      <i class="bi bi-box-arrow-right"></i> Sair</a>
+    <div class="sidebar">
+      <div class="buttons">
+        <ul class="img">
+          <img src="../static/img/logotipo.png" alt="logotipo" height="60" width="180">
+        </ul>
+        {% if current_user.path_profile_pic %}
+          <img class="img-perfil" src="{{ url_for('static', filename=current_user.path_profile_pic) }}" alt="perfil">
+        {% else %}
+          <img class="img-perfil" src="../static/img/perfil.jpg" alt="perfil">
+        {% endif %}
+        <h1 class="profile_name">{{ current_user.primeiro_nome }}</h1>
+        <a class="nav-link active" aria-current="page" href="">
+          <i class="bi bi-person"></i> Perfil
+        </a>
+        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/movies_page">
+          <i class="bi bi-film"></i> Lista de Filmes
+        </a>
+        <a class="nav-link active" style="background-color: rgba(44, 139, 255, 0.744);" aria-current="page" href="http://127.0.0.1:5000/home">
+          <i class="bi bi-heart-fill"></i> Filmes Assistidos
+        </a>
+        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/add_movie">
+          <i class="bi bi-bookmark-plus-fill"></i> Registrar Novo Filme
+        </a>
+      </div>
     </div>
-  </div>
-  
-  <div class="conteudo">
-    <h1 class="titulo">Meus Filmes:</h1>
-    <div class="grid-filmes">
+    
+    <div class="conteudo grid-meusfilmes">
+      <h1 class="titulo">Meus Filmes:</h1>
+      <div class="grid-filmes">
+        {% set filmes_exibidos = [] %}
         {% for filme in filmes %}
-            <div class="filme">
-              <a href="{{ url_for('views.show_movie', filme_id=filme.id) }}" >
-                <img src="{{ url_for('static', filename=filme.image_path) }}" alt="{{ filme.titulo }}">
-                <p>{{ filme.titulo }}</p>
-              </a>
-            </div>
+            {% if filme.movie_ID not in filmes_exibidos %}
+                {% set _ = filmes_exibidos.append(filme.movie_ID) %}
+                <div class="filme" data-movie-id="{{ filme.movie_ID }}">
+                    <a href="{{ url_for('views.show_movie', filme_id=filme.movie_ID) }}">
+                        <img src="{{ url_for('static', filename=filme.image_path) }}" alt="{{ filme.titulo }}">
+                        <p>{{ filme.titulo }}</p>
+                        <span class="contador">x{{ movies_counts.get(filme.movie_ID, 0) }}</span>
+                    </a>
+                </div>
+            {% endif %}
         {% endfor %}
+      </div>   
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
