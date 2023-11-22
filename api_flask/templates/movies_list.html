@@ -22,10 +22,10 @@
       <a class="nav-link active" aria-current="page" href="">
         <i class="bi bi-person"></i> Perfil
       </a>
-      <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/movies_page">
+      <a class="nav-link active" style="background-color: rgba(44, 139, 255, 0.744);" aria-current="page" href="http://127.0.0.1:5000/movies_page">
         <i class="bi bi-film"></i> Lista de Filmes
       </a>
-      <a class="nav-link active" style="background-color: rgba(44, 139, 255, 0.744);" aria-current="page" href="http://127.0.0.1:5000/home">
+      <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/home">
         <i class="bi bi-heart-fill"></i> Meus Filmes
       </a>
       <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/add_movie">
@@ -43,6 +43,15 @@
                 <img src="{{ url_for('static', filename=filme.image_path) }}" alt="{{ filme.titulo }}">
                 <p>{{ filme.titulo }}</p>
               </a>
+              <div class="popup popup-left">
+                <p class="filme-titulo">{{ filme.titulo }}</p>
+                <p class="filme-infos"><strong>Ano de Lançamento: </strong>{{ filme.ano }}</p>
+                <p class="filme-infos"><strong>Diretor: </strong>{{ filme.diretor }}</p>
+                <p class="filme-infos p-border-bottom"><strong>Gênero: </strong>{{ filme.genero }}</p>
+                <a href="{{ url_for('views.add_movie_click', filme_id=filme.id) }}" >
+                  <button class="adicionar" data-id="{{ filme.id }}"><i class="bi bi-check-circle">  </i>Já assisti</button>
+                </a>
+              </div>
             </div>
         {% endfor %}
     </div>

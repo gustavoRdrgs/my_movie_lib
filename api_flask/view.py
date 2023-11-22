@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
 from flask_login import login_required, current_user
-from .controller.movies import add_new_movie, find_by_user_id
+from .controller.movies import add_new_movie, find_by_user_id, get_movie_by_id
+from .controller.movies_geral import add_new_movie_geral, get_all_geral, get_movie_by_id_geral
 from . import db
 import json, os
 
@@ -10,9 +11,14 @@ views = Blueprint('views', __name__)
 @views.route('/home', methods=['GET', 'POST'])
 @login_required
 def home():
-    print(current_user.id)
     lista_filmes = find_by_user_id(current_user.id)
     return render_template("home.html", user=current_user, filmes=lista_filmes)
+
+@views.route('/movies_page', methods=['GET', 'POST'])
+@login_required
+def movies_page():
+    lista_filmes = get_all_geral()
+    return render_template("movies_list.html", user=current_user, filmes=lista_filmes)
 
 @views.route('/add_movie', methods=['GET', 'POST'])
 @login_required
@@ -46,22 +52,32 @@ def add_movie():
             path = "C:/Users/gusta/OneDrive/Documentos/Códigos/Python/my_movie_lib/api_flask/static/img/poster_filmes/"
             path_image = os.path.join(path, path_titulo + '.jpg')
 
-            add_new_movie(titulo, diretor, ano, minutos, genero, current_user.id, "img/poster_filmes/"+path_titulo+".jpg", sinopse)
+            add_new_movie_geral(titulo, diretor, ano, minutos, genero, "img/poster_filmes/"+path_titulo+".jpg", sinopse)
             flash('Filme cadastrado com sucesso!', category='success')
             imagem.save(path_image)
 
     return render_template("add_filme.html", user=current_user)
 
-"""def home():
-    if request.method == 'POST':
-        note = request.form.get('note')
+@views.route('/add_movie_click/<int:filme_id>', methods=['GET', 'POST'])
+@login_required
+def add_movie_click(filme_id):
+    filme = get_movie_by_id_geral(filme_id)
+    titulo = filme.titulo
+    diretor = filme.diretor
+    ano = filme.ano
+    minutos = filme.minutos
+    genero = filme.genero
+    user_ID = current_user.id
+    image_path = filme.image_path
+    sinopse = filme.sinopse
+    movie_ID = filme_id
 
-        if len(note) < 1:
-            flash('Note is too short!', category='error')
-        else:
-            #new_note = Note(data=note, user_id=current_user.id)
-            #db.session.add(new_note)
-            #db.session.commit()
-            flash('Note added!', category='success')
+    add_new_movie(titulo, diretor, ano, minutos, genero, user_ID, image_path, sinopse, movie_ID)
+    lista_filmes = get_all_geral()
+    return render_template("movies_list.html", user=current_user, filmes=lista_filmes)
 
-    return render_template("home.html", user=current_user)"""
+@views.route('/movie_page/<int:filme_id>', methods=['GET', 'POST'])
+@login_required
+def show_movie(filme_id):
+    filme = get_movie_by_id_geral(filme_id)
+    return render_template('movie_page.html', filme=filme)

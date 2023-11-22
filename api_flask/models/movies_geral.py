@@ -3,8 +3,8 @@ from sqlalchemy.orm import sessionmaker
 from typing import List
 from ..utils.ConnectionHandler import ConnectionHandler
 
-class Movies(db.Model):
-    __tablename__ = "movies"
+class MoviesGeral(db.Model):
+    __tablename__ = "movies_geral"
 
     id = db.Column(db.Integer, primary_key=True)
     titulo = db.Column(db.String(100))
@@ -12,38 +12,36 @@ class Movies(db.Model):
     ano = db.Column(db.Integer)
     minutos = db.Column(db.Integer)
     genero = db.Column(db.String(50))
-    user_ID = db.Column(db.Integer, db.ForeignKey('users.id'))
     image_path = db.Column(db.String(300))
     sinopse = db.Column(db.String(1000))
-    movie_ID = db.Column(db.Integer, db.ForeignKey('movies_geral.id'))
-
+        
     @classmethod
-    def find_by_user_id(cls, user_id) -> List['Movies']:
+    def find_by_movie_id_geral(cls, movie_id):
 
         engine = ConnectionHandler.get_engine()
         Session = sessionmaker(engine)
         
         with Session() as session:
 
-            return session.query(Movies).filter_by(user_ID = user_id).all()
+            return session.query(MoviesGeral).filter_by(id = movie_id).first()
         
     @classmethod
-    def find_by_movie_id(cls, movie_id):
+    def find_all_geral(cls):
 
         engine = ConnectionHandler.get_engine()
         Session = sessionmaker(engine)
         
         with Session() as session:
 
-            return session.query(Movies).filter_by(id = movie_id).first()
+            return session.query(MoviesGeral).all()
         
     @classmethod
-    def add_new_movie(cls, titulo, diretor, ano, minutos, genero, user_ID, image_path, sinopse, movie_ID):
+    def add_new_movie_geral(cls, titulo, diretor, ano, minutos, genero, image_path, sinopse):
 
         engine = ConnectionHandler.get_engine()
         Session = sessionmaker(engine)
         with Session() as session:
-            new_movie = Movies(titulo=titulo, diretor=diretor, ano=ano, minutos=minutos, genero=genero, user_ID=user_ID, image_path=image_path, sinopse=sinopse, movie_ID=movie_ID)
+            new_movie = MoviesGeral(titulo=titulo, diretor=diretor, ano=ano, minutos=minutos, genero=genero, image_path=image_path, sinopse=sinopse)
             session.add(new_movie)
             session.commit()
         return new_movie
