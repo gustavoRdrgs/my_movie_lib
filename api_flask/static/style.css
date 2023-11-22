@@ -576,3 +576,20 @@ body {
   .contador {
     opacity: 1;
   }
+
+.conteudo-principal {
+    margin-left: 370px;
+    margin-top: 80px;
+}
+
+.info-filme img {
+    flex: 0 0 auto;
+    width: 200px;
+    height: 100%;
+    border: 5px solid #fff;
+    border-radius: 4px;
+}
+
+.info-filme {
+    flex: 1 1 auto;
+}
