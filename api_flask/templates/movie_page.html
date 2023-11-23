@@ -41,10 +41,20 @@
 
   <div class="conteudo-principal">
     <div class="info-filme">
-        <img src="{{ url_for('static', filename=filme.image_path) }}" alt="Cartaz do Filme">
-        <h2 class="filme-titulo">{{ filme.titulo }}</h2>
-        <p>Ano de Lançamento: {{ filme.ano }}</p>
-        <p>Diretor: {{ filme.diretor }}</p>
+      <img src="{{ url_for('static', filename=filme.image_path) }}" alt="Cartaz do Filme">
+      <a href="{{ url_for('views.add_movie_click', filme_id=filme.id) }}" >
+        <button class="adicionar-movie-page" data-id="{{ filme.id }}"><i class="bi bi-check-circle">  </i> Assistido</button>
+      </a>
+      <div class="filme-titulo">
+        <h2><span>{{ filme.titulo }}</span></h2>
+      </div>
+      <div class="filme-dados">
+        <p>Ano de Lançamento: <b style="color: rgb(77, 157, 255);">{{ filme.ano }}</b></p>
+        <p>Diretor: <b style="color: rgb(77, 157, 255);">{{ filme.diretor }}</b></p>
+        <p>Gênero: <b style="color: rgb(77, 157, 255);">{{ filme.genero }}</b></p>
+        <p class="tempo">Tempo de duração: <b style="color: rgb(77, 157, 255);">{{ filme.minutos }} minutos</b></p>
+        <p class="sinopse"><b style="color: rgb(77, 157, 255);">Sinopse:</b> {{ filme.sinopse }}</p>
+      </div>
     </div>
   </div>
 </body>

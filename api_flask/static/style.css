@@ -446,7 +446,7 @@ body {
     font-size: 26px;
     color: rgb(255, 255, 255);
     text-align: left;
-    border-bottom: 3px solid  rgba(44, 139, 255, 0.648);;
+    border-bottom: 3px solid  rgba(44, 139, 255, 0.648);
     padding-bottom: 5px;
     margin-bottom: 20px;
     font-weight: bold;
@@ -557,9 +557,9 @@ body {
     z-index: 1;
     font-weight: bold;
     transition: opacity 0.3s ease-in-out;
-  }
-  
-  .contador::before {
+}
+
+.contador::before {
     content: '';
     position: absolute;
     top: -2px;
@@ -570,26 +570,88 @@ body {
     border: 3px solid #ffffff;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-  }
+}
   
-  .contador::before,
-  .contador {
+.contador::before,
+.contador {
     opacity: 1;
-  }
+}
 
 .conteudo-principal {
     margin-left: 370px;
     margin-top: 80px;
 }
 
+.conteudo-principal a {
+    text-decoration: none;
+}
+
 .info-filme img {
-    flex: 0 0 auto;
     width: 200px;
     height: 100%;
     border: 5px solid #fff;
     border-radius: 4px;
 }
 
-.info-filme {
-    flex: 1 1 auto;
+.filme-dados {
+    padding: 20px;
+    margin-left: -20px;
+    margin-right: 100px;
+    margin-top: 5px;
+    background-color: #00000092;
+}
+
+.filme-dados p {
+    margin-top: -5px;
+    color: #fff;
+    margin-left: 210px;
+}
+
+.filme-dados .tempo {
+    border-bottom: 2px solid rgba(77, 157, 255, 0.859);
+    padding-bottom: 20px;
+}
+
+.filme-dados .sinopse {
+    margin-left: 0px;
+    margin-top: 120px;
+    padding: 8px;
+    border-radius: 7px;
+    border: 2px solid rgb(63, 127, 205);
+}
+
+.info-filme h2 {
+    font-weight: bold;
+    color: #fff;
+    margin-top: -320px;
+    margin-left: 205px;
+}
+
+.info-filme h2 span {
+    padding: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 4px;
+    background-color: rgb(63, 127, 205);
+}
+
+.adicionar-movie-page {
+    display: block;
+    border-width: 1px;
+    border-color: rgb(0, 0, 0);
+    background-color: rgb(22, 127, 255);
+    margin-top: 8px;
+    margin-left: 3px;
+    margin-bottom: 0;
+    color: #fff;
+    padding: 5px 50px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    pointer-events: auto;
+}
+
+.adicionar-movie-page.clicked {
+    transform: scale(0.95);
+    box-shadow: 0 0 5px rgb(0, 0, 0);
 }
