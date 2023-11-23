@@ -52,8 +52,9 @@ def signup():
             flash('Senha menor que 7 caracteres', category='error')
         else:
             add_user(first_name, email, password1)
-            login_user(user, remember=True)
+            user1 = Users.query.filter_by(email=email).first()
+            login_user(user1, remember=True)
             flash('Conta criada!', category='success')
-            return redirect(url_for('auth.index'))
+            return redirect(url_for('auth.login'))
         
     return render_template('sign_up.html', user=current_user)

@@ -12,7 +12,7 @@ def get_user_by_email(email):
 
 def get_user_by_id(id):
 
-    return Users.fin(id)
+    return Users.find_by_id(id)
     
 def add_user(firstName, email, senha):
 
