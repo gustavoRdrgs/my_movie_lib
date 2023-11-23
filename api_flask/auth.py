@@ -12,7 +12,6 @@ def login():
         user = get_user_by_email(email)
         password = request.form.get('password')
         if user:
-            print(user.path_profile_pic)
             if password == user.senha:
                 login_user(user, remember=True)
                 return redirect(url_for('views.movies_page'))

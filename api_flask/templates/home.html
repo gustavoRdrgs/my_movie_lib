@@ -12,7 +12,7 @@
 </head>
 <body class="home">
   <div class="background">
-    <a class="corner-button" href="http://127.0.0.1:5000/logout">
+    <a class="corner-button" href="/logout">
       <i class="bi bi-box-arrow-right"></i> Sair</a>
     <div class="sidebar">
       <div class="buttons">
@@ -25,16 +25,16 @@
           <img class="img-perfil" src="../static/img/perfil.jpg" alt="perfil">
         {% endif %}
         <h1 class="profile_name">{{ current_user.primeiro_nome }}</h1>
-        <a class="nav-link active" aria-current="page" href="">
+        <a class="nav-link active" aria-current="page" href="/perfil">
           <i class="bi bi-person"></i> Perfil
         </a>
-        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/movies_page">
+        <a class="nav-link active" aria-current="page" href="/movies_page">
           <i class="bi bi-film"></i> Lista de Filmes
         </a>
-        <a class="nav-link active" style="background-color: rgba(44, 139, 255, 0.744);" aria-current="page" href="http://127.0.0.1:5000/home">
+        <a class="nav-link active" style="background-color: rgba(44, 139, 255, 0.744);" aria-current="page" href="/home">
           <i class="bi bi-heart-fill"></i> Filmes Assistidos
         </a>
-        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/add_movie">
+        <a class="nav-link active" aria-current="page" href="/add_movie">
           <i class="bi bi-bookmark-plus-fill"></i> Registrar Novo Filme
         </a>
       </div>

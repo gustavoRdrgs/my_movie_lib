@@ -17,3 +17,11 @@ def find_by_user_id(user_id):
 def get_movie_by_id(movie_id):
 
     return Movies.find_by_movie_id(movie_id)
+
+def get_genero_most_repeat(user_ID):
+
+    return Movies.find_genero_most_repeat(user_ID)
+
+def get_movies_watched(user_ID):
+
+    return Movies.find_number_movies_watched(user_ID)

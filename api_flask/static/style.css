@@ -655,3 +655,92 @@ body {
     transform: scale(0.95);
     box-shadow: 0 0 5px rgb(0, 0, 0);
 }
+
+.content-profile {
+    margin-top: 70px;
+}
+
+.content-profile .description {
+    margin-top: -400px;
+    margin-left: 570px;
+    color: #ffffffaf;
+}
+
+
+.content-profile .description p {
+    padding: 10px;
+    margin-left: 0px;
+    margin-right: 200px;
+    font-style: italic;
+}
+
+.content-profile img {
+    margin-left: 14px;
+    width: 250px;
+    height: 250px;
+    vertical-align: middle;
+    object-fit: cover; 
+    align-content: center;
+    border-radius: 8px;
+    border: 6px solid #fff;
+}
+
+
+.content-profile h2 {
+    margin-left: 14px;
+    width: 250px;
+    font-weight: bold;
+    color: rgb(22, 127, 255);
+}
+
+.content-profile p {
+    font-weight: bold;
+    color: #fff;
+    text-align: left;
+}
+
+.profile-info {
+    margin-right: 30px;
+    margin-left: 280px;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: left;
+    text-align: center;
+    background-color: #00000064;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.profile-info .profile-details {
+    background-color: #ffffff22;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.edit-button {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    margin-top: -415px;
+    margin-right: 30px;
+    margin-left: 1115px;
+    top: 20px;
+    right: 20px;
+    background-color: rgb(22, 127, 255);
+    color: white;
+    padding: 9px 10px;
+    border: none; 
+    border-radius: 50%; 
+    cursor: pointer; 
+    text-decoration: none;
+}
+
+.edit-button i {
+    font-size: 1.3em;
+}
+
+.edit-button:hover {
+    background-color: rgba(84, 84, 84, 0.712);
+}

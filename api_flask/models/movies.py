@@ -1,5 +1,6 @@
 from api_flask import db
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy import func
 from typing import List
 from ..utils.ConnectionHandler import ConnectionHandler
 
@@ -47,3 +48,30 @@ class Movies(db.Model):
             session.add(new_movie)
             session.commit()
         return new_movie
+    
+    @classmethod
+    def find_genero_most_repeat(cls, user_id):
+
+        engine = ConnectionHandler.get_engine()
+        Session = sessionmaker(engine)
+
+        with Session() as session:
+            genero_mais_comum = session.query(Movies.genero, func.count(Movies.genero).label('contagem')) \
+            .filter_by(user_ID = user_id) \
+            .group_by(Movies.genero) \
+            .order_by(func.count(Movies.genero).desc()) \
+            .first()
+
+        return genero_mais_comum
+    
+    @classmethod
+    def find_number_movies_watched(cls, user_id):
+
+        engine = ConnectionHandler.get_engine()
+        Session = sessionmaker(engine)
+
+        with Session() as session:
+             quantidade_filmes = session.query(func.count(Movies.id)).filter_by(user_ID = user_id).scalar()
+
+        return quantidade_filmes
+        

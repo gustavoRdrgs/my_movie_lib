@@ -1,2 +1,3 @@
 *.pyc
 api_flask/static/img/poster_filmes/
+api_flask/static/img/profile_pictures/
