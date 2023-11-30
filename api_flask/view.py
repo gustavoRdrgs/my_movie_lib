@@ -5,6 +5,7 @@ from collections import Counter
 from .controller.users import get_user_by_id, update_minutos, update_descricao, update_profile_pic
 from .controller.movies import add_new_movie, find_by_user_id, get_genero_most_repeat, get_movies_watched
 from .controller.movies_geral import add_new_movie_geral, get_all_geral, get_movie_by_id_geral
+from .controller.comentarios import get_comentario_by_movie_id
 from .utils.Functions import calcular_tempo
 from . import db
 import json, os
@@ -130,4 +131,5 @@ def add_movie_click(filme_id):
 @login_required
 def show_movie(filme_id):
     filme = get_movie_by_id_geral(filme_id)
-    return render_template('movie_page.html', filme=filme)
+    comentarios_filme = get_comentario_by_movie_id(filme_id)
+    return render_template('movie_page.html', filme=filme, comentarios_filme=comentarios_filme)
